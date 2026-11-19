@@ -1,0 +1,52 @@
+{
+  "active_controls": [
+    "validate_input",
+    "blind",
+    "refuse",
+    "log",
+    "escalate"
+  ],
+  "format_problems": [],
+  "entries": [
+    {
+      "control": "validate_input",
+      "principle": "Accuracy and Data Integrity",
+      "principle_source": "ACM Code of Ethics and Professional Conduct (2018), Section 2.5",
+      "instrument": "Regulation (EU) 2016/679 (General Data Protection Regulation, 27 April 2016)",
+      "provision": "Article 5(1)(d)",
+      "why_here": "Rejects out-of-range or malformed applicant fields before inference so corrupted records cannot produce arbitrary scholarship screening outcomes."
+    },
+    {
+      "control": "blind",
+      "principle": "Fairness and Non-Discrimination",
+      "principle_source": "ACM Code of Ethics and Professional Conduct (2018), Section 1.4",
+      "instrument": "Regulation (EU) 2016/679 (General Data Protection Regulation, 27 April 2016)",
+      "provision": "Article 5(1)(c)",
+      "why_here": "Withholds `name` and `university` from the model prompt to eliminate the pair divergence observed in Part 1 on irrelevant identity and university-tier attributes."
+    },
+    {
+      "control": "refuse",
+      "principle": "Purpose Limitation, Consent, and Protection of Minors",
+      "principle_source": "UNESCO Recommendation on the Ethics of Artificial Intelligence (2021), Right to Privacy and Data Protection",
+      "instrument": "Regulation (EU) 2016/679 (General Data Protection Regulation, 27 April 2016)",
+      "provision": "Article 5(1)(b)",
+      "why_here": "Blocks off-purpose requests, under-18 applicants, unconsented automated processing, and prompt-injection attempts in free-text fields before the model is called."
+    },
+    {
+      "control": "log",
+      "principle": "Responsibility and Accountability",
+      "principle_source": "UNESCO Recommendation on the Ethics of Artificial Intelligence (2021), Responsibility and Accountability",
+      "instrument": "Regulation (EU) 2024/1689 (EU Artificial Intelligence Act, 13 June 2024)",
+      "provision": "Article 12(1)",
+      "why_here": "Records every screening and refusal event in `decisions.jsonl` with input hashes, withheld fields, raw outputs, and fired controls so decisions can be audited afterwards."
+    },
+    {
+      "control": "escalate",
+      "principle": "Human Oversight and Determination",
+      "principle_source": "UNESCO Recommendation on the Ethics of Artificial Intelligence (2021), Human Oversight and Determination",
+      "instrument": "Regulation (EU) 2024/1689 (EU Artificial Intelligence Act, 13 June 2024)",
+      "provision": "Article 14(1)",
+      "why_here": "Routes borderline scores (45–60), unparseable outputs, decision-score contradictions, high-merit rejections, and bias-cue rationales to human reviewers."
+    }
+  ]
+}
